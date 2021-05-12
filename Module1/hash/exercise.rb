@@ -26,7 +26,7 @@ heroe = {
   real_name: "Bruce Banner",
   powers: ["Smashes", "Strength", "Bullet proof"]
 }
-heroes.change_this_method
+puts heroe.keys.inspect
 #=> [:name, :real_name, :powers]
 
 # Exercise 2:
@@ -36,7 +36,7 @@ heroe = {
   real_name: "Bruce Banner",
   powers: ["Smashes", "Strength", "Bullet proof"]
 }
-heroes.change_this_method
+puts heroe.delete(:real_name)
 #=> "Bruce Banner"
 
 # Exercise 3:
@@ -47,6 +47,8 @@ heroe = {
   powers: ["Smashes", "Strength", "Bullet proof"]
 }
 #=> ["Smashes", "Strength", "Bullet proof", "Is green"]
+heroe[:powers] << "Is blue"
+puts heroe.inspect
 
 # Exercise 4:
 # Join the two hashes so Hulk has the right set of powers
@@ -60,15 +62,62 @@ real_powers = {
   powers: ["Smashes", "Strength", "Bullet proof"]
 }
 #=> { name: "Hulk", real_name: "Bruce Banner", powers: ["Smashes", "Strength", "Bullet proof"]}
+puts heroe.merge(real_powers).inspect
+
 
 # Exercise 5:
 # Create a Hash with ths states form Mexico, use an abbreviation as key and the full name as the value
 # Ex. Nuevo Leon is the full name and NL would be the key
-states = {}
+states = {
+  AGU: "Aguascalientes",
+  BCN: "Baja California",
+  BCS: "Baja California Sur",
+  CAM: "Campeche",
+  CHP: "Chiapas",
+  CHH: "Chihuahua",
+  C​MX: "Ciudad de México",
+  COA: "Coahuila",
+  COL: "Colima",
+  DUR: "Durango",
+  GUA: "Guanajuato",
+  GRO: "Guerrero",
+  HID: "Hidalgo",
+  JAL: "Jalisco",
+  MEX: "México",
+  MIC: "Michoacán",
+  MOR: "Morelos",
+  NAY: "Nayarit",
+  NLE: "Nuevo León",
+  OAX: "Oaxaca",
+  PUE: "Puebla",
+  QUE: "Querétaro",
+  ROO: "Quintana Roo",
+  SLP: "San Luis Potosí",
+  SIN: "Sinaloa",
+  SON: "Sonora",
+  TAB: "Tabasco",
+  TAM: "Tamaulipas",
+  TLA: "Tlaxcala",
+  VER: "Veracruz",
+  YUC: "Yucatán",
+  ZAC: "Zacatecas"
+}
 
 # Exercise 6:
 # Describe yourself as a Hash, some ideas would be, name, age, hobbies, email, gender, etc
 # Try to use different data types as the values, such as strings, arrays, floats
+memo = {
+  full_name: "Guillermo Alvarez",
+  age: 24,
+  hobbies: ["horticulture", "school", "reading", "cod"],
+  contact: {
+    email: "guillermo@icalialabs.com",
+    address: {
+      city: "Ciudad Juarez",
+      state: "CHH"
+    }
+  }
+}
 
 # Exercise 7:
 # The hash below stores data regarding what is on my fridge
@@ -81,10 +130,13 @@ fruits = {
 # There are 3 apples on the fridge
 # My only 1 watermelon takes all the space on my fridge =(
 # How much juice would I get from 5 oranges?
+puts "There are #{fruits[:apple]} apples on the fridge"
+puts "My only #{fruits[:watermelon]} watermelon takes all the space on my fridge =("
+puts "How much juice would I get from #{fruits[:orange]} oranges?"
 
 # Exercise 8:
 # Grab the hash created back on exercise 5, and get the name for all the states
-states.change_this_method
+puts states.values.inspect
 # => ["Aguascalientes", "Nuevo Leon"...]
 
 # Exersice 9:
@@ -107,3 +159,20 @@ characters = {
     { name: "Ragnarok" }
   ]
 }
+
+puts "List only the avengers names"
+puts characters[:avengers].inspect
+
+puts "Add a villain to the array, some ideas. Venom, Hela, Dormamu"
+puts characters[:villains] << { name: "Dormamu" }
+
+puts "Add another key with avengers without powers. War Machine, Iron Man, Hawkeye, Black Widow"
+characters[:other_avengers] = [
+  {name: "War Machine"},
+  {name: "Iron Man"},
+  {name: "Hawkeye"},
+  {name: "Black Widow"}
+]
+
+puts "Reset the whole hash to store nothing"
+puts characters.clear
