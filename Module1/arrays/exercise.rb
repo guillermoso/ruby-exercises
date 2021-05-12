@@ -20,71 +20,82 @@
 # puts ["Luke", "Yoda"]
 
 # Exercise 1:
-# Use a method to get the size of an array
+puts "Use a method to get the size of an array"
 heroes = ["Thor", "Hulk", "Iron Man"]
-heroes.change_this_method
+puts heroes.size
 #=> 3
 
 # Exercise 2:
-# Append 2 more heroes to the array
+puts "Append 2 more heroes to the array"
 heroes = ["Thor", "Hulk", "Iron Man"]
 #=> ["Thor", "Hulk", "Iron Man", "Black Widow", "Wanda"]
+heroes << "Black Widow"
+heroes << "Wanda"
+puts heroes
 
 # Exercise 3:
-# Remove the villains from the heroes array
+puts "Remove the villains from the heroes array"
 heroes = ["Thor", "Hulk", "Dark Elf", "Iron Man", "Loki", "Thanos"]
 #=> ["Thor", "Hulk", "Iron Man"]
+villains = ["Dark Elf", "Loki", "Thanos"]
+puts heroes - villains
 
 # Exercise 4:
-# Create a nested array with all of your family members, include:
+puts "Create a nested array with all of your family members, include:"
 # name: string
 # age: integer
+family = [["Eduardo", 64], ["Hortensia", 58], ["Alex", 30], ["Jessica", 26], ["Guillermo", 24]]
+puts family
 
 # Exercise 5:
-# Insert a villain after a heroe
+puts "Insert a villain after a heroe"
 heroes = ["Thor", "Hulk", "Iron Man"]
-heroes.change_this_method
+villains = ["Thanos", "Loki", "Dark Elf"]
+heroes.insert(1, "Thanos")
+heroes.insert(3, "Loki")
+heroes.insert(-1, "Dark Elf")
 #=> ["Thor", "Thanos", Hulk", "Loki", "Iron Man", "Dark Elf"]
+puts heroes
 
 # Exercise 6:
-# Use a method to get a simple array from a nested one
+puts "Use a method to get a simple array from a nested one"
 heroes = [["Thor", "Black Widow"], "Hulk", ["Iron Man", "War Machine"], ["Wanda"]]
-heroes.change_this_method
+puts heroes.flatten
 #=> ["Thor", "Black Widow", "Hulk", "Iron Man", "War Machine", "Wanda"]
 
 # Exercise 7:
-# Use a method to remove all the duplicated heroes
+puts "Use a method to remove all the duplicated heroes"
 heroes = ["Thor", "Hulk", "Iron Man", "Thor", "Hulk", "Spider Man", "Wanda", "Wanda"]
-heroes.change_this_method
+puts heroes.uniq
 #=> ["Thor", "Black Widow", "Hulk", "Iron Man", "War Machine", "Wanda"]
 
 # Exercise 8:
-# Use a method to inverse the heroes array
+puts "Use a method to inverse the heroes array"
 heroes = ["Thor", "Hulk", "Iron Man"]
-heroes.change_this_method
+puts heroes.reverse
 #=> ["Iron Man", "Hulk", "Thor"]
 
 # Exercise 9:
-# Use a method to get a string separated by commas from the heroes array
+puts "Use a method to get a string separated by commas from the heroes array"
 heroes = ["Thor", "Hulk", "Iron Man"]
-heroes.change_this_method
+puts heroes.join(", ")
 #=> "Iron Man, Hulk, Thor"
 
 # Exercise 10:
-# What would be the output from the following invokations.
+puts "What would be the output from the following invokations."
 heroes = ["Thor", "Hulk", "Iron Man"]
-heroes[3]
+heroes[3] # nil
 
-heroes * 3
+heroes * 3 # ["Thor", "Hulk", "Iron Man", "Thor", "Hulk", "Iron Man", "Thor", "Hulk", "Iron Man"]
 
-heroes[-1]
+heroes[-1] # Iron Man
 
-heroes.pop
+heroes.pop # Iron Man  -- heroes => ["Thor", "Hulk"]
 
 numbers = [1,2,3]
 
-numbers.max
+numbers.max # 3
 
-numbers.min
+numbers.min # 1
 
-numbers.sum
+numbers.sum # 6
