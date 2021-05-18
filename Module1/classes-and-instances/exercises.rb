@@ -54,7 +54,7 @@
 ## Create a shuffler infinity gem team assignator to assign two superheroes per gem
 ## 1. Every Gem must have two superheroes
 ## 2. The superheroes already assigned are not allowed to be assigned on other gems
-## 3. Build as many classes you think you will need, some may be, Heroe, Gem, InfinityShuffler
+## 3. Build as many classes you think you will need, some may be, Heroe, Gem, InfinityShuffler, Assignation
 ## 4. Refactor every time you can
 ## 5. The code at the bottom must run without change
 ## Hint: http://ruby-doc.org/core-2.2.0/Array.html#method-i-sort
@@ -64,9 +64,79 @@ INFINITY_GEMS = %w{ Mind Soul Time Space Reality }
 
 ## Your code starts here
 
+class CustomGem
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+end
+
+class Heroe
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+    @assigned = false
+  end
+end
+
+class Assignation
+  attr_reader :gem, :gems, :heroes
+
+  def initialize(gem, heroes)
+    @gem = gem
+    @gems = [gem]
+    @heroes = heroes
+  end
+end
+
+class InfinityShuffler
+  attr_reader :assignations
+
+  def initialize
+    @assignations = []
+    @assigned_heroes_names = []
+  end
+
+  def gems
+    @gems ||= INFINITY_GEMS.map { |gem_name| CustomGem.new(gem_name) }
+  end
+
+  def heroes
+    @heroes ||= HEROES.map { |heroe| Heroe.new(heroe) }
+  end
+
+  def unassigned_hero
+    heroes.find do |hero|
+      @assigned_heroes_names.include?(hero.name) 
+    end
+  end
+
+  def mark_hero_as_assigned(hero)
+    @assigned_heroes_names << hero.name
+  end
+
+  def assign_heroes
+    gems.each do |gem|
+
+      unassigned_heroes = []
+      2.times do |i|
+        not_assigned_hero = unassigned_hero
+        unassigned_heroes << not_assigned_hero
+        # self.mark_hero_as_assigned
+        mark_hero_as_assigned(not_assigned_hero)
+      end
+
+      @assignations << Assignation.new(gem, unassigned_heroes)
+    end
+  end
+end
+
+
 ## Your code ends here
 
-infinity_shuffler = InfinityShuffler.new
+shuffler = InfinityShuffler.new
 
 shuffler.assign_heroes
 
@@ -75,11 +145,9 @@ shuffler.assignations.each do |assignation|
   assignation.gems.each do |gem|
     puts "The #{gem.name} Gem"
     puts "Is in charge of:"
-    assignation.heroes.each do |heroes|
+    assignation.heroes.each do |heroe|
       puts "#{heroe.name}"
     end
   end
 end
 
-# Exercise 2:
-# 

@@ -140,11 +140,11 @@ while i < split_phrase.length do
   word = split_phrase[i]
 
   if word.length == 2
-    puts "The word #{word} has two words"
+    puts "The word #{word} has two letters"
   elsif word.length > 2 && word.length <= 5
-    puts "The word #{word} has three words"
+    puts "The word #{word} has three letters"
   elsif word.length > 5
-    puts "The word #{word} has more than 5 words" 
+    puts "The word #{word} has more than 5 letters" 
   end
 
   i += 1
