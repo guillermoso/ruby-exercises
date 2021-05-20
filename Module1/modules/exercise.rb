@@ -17,6 +17,28 @@
 #  3.1 Have a method to return a description about the engine, something like: "Hey I run on Oil"
 # 
 
+module Contaminator
+  def engine_description
+    "Hey I'm not eco-friendly because I run on oil"
+  end
+end
+
+module Engine
+  def start
+    puts "Starting engine..."
+  end
+
+  def stop
+    puts "Stopping engine..."
+  end
+end
+
+module OilChangeable
+  def change_oil
+    puts "Changing oil..."
+  end
+end
+
 class Bycicle
   def drive
     puts "This is actually nor drive, but ride!"
@@ -24,13 +46,8 @@ class Bycicle
 end
 
 class Motorcycle
-  def start
-    puts "Starting engine..."
-  end
-
-  def stop
-    puts "Stopping engine..."
-  end
+  include Engine
+  extend Contaminator
 
   def drive
     puts "Bad boys for life!"
@@ -38,15 +55,18 @@ class Motorcycle
 end
 
 class Car
-  def start
-    puts "Starting engine..."
-  end
-
-  def stop
-    puts "Stopping engine..."
-  end
+  include Engine
+  extend Contaminator
 
   def drive
     puts "Four wheels rule!"
   end
 end
+
+
+mc = Motorcycle.new
+
+puts Motorcycle.engine_description
+
+mc.start
+mc.stop

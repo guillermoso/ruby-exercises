@@ -37,3 +37,73 @@
 #   6. Move all the methods from the Car class to the Vehicle
 #   7. Write a method called age that calls a private method to calculate the age of the vehicle. Make sure the private method is not available from outside of the class.
 #      You'll need to use Ruby's built-in Time class to help.
+
+class Vehicle
+  @@total_instances = 0
+
+  def initialize(year, model, color)
+    @year = year
+    @model = model
+    @color = color
+    
+    @@total_instances += 1
+    
+    @current_speed = 0 
+  end
+
+  def gas_mileage(gallons, miles)
+    miles / gallons
+  end
+
+  def total_instances
+    @@total_instances
+  end
+
+  def accelerate(amount = 1)
+    @current_speed += amount
+  end
+
+  def brake(amount = 1)
+    @current_speed -= amount
+  end
+
+  def shutdown
+    @current_speed = 0
+  end
+
+  def spray(color)
+    @color = color
+  end
+
+  private
+  def vehicles_age
+    today = Time.now
+
+    today.year - @year
+  end
+end
+
+class Car < Vehicle
+  attr_reader :current_speed
+  
+  # * not needed as the parent class already implements it. Its only needed if you are going to extend the initialize modeth
+  # def initialize(year, model, color)
+  #     super(year, model, color)
+
+  #     puts self.vehicles_age
+  # end
+end
+
+class Truck < Vehicle
+  DOORS = 2
+  # * not needed as the parent class already implements it. Its only needed if you are going to extend the initialize modeth
+  # def initialize(year, model, color)
+  #   super(year, model, color)
+  # end
+end
+
+car = Car.new(2016, "kia", "blue")
+
+truck = Truck.new(2018, "chevy", "red")
+
+puts truck.total_instances
