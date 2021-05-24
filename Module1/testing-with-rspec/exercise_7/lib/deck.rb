@@ -6,11 +6,19 @@ class Deck
   end
 
   def shuffle
-    # your code here
+    @cards.shuffle!
   end
 
   def deal
-    # your code here
+    dealt_card = @cards.pop
+
+    raise OutOfCardsError if dealt_card.nil?
+
+    dealt_card
+  end
+
+  def add_card(card)
+    @cards << card
   end
 end
 
