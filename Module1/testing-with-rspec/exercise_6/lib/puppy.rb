@@ -3,24 +3,34 @@ class Puppy
   # "_reader" means other objects can read your state by calling "some_puppy.state".
   attr_reader :state
 
+  SOUNDS = {
+    growling: "Grrrr.",
+    angry: "BARK BARK BARK!",
+    default: "Bark!"
+  }.freeze
+
   def initialize
     # Puppies are calm at first.
     @state = :calm
   end
 
   def pet
-    # Your code here
+    @state = @state == :wagging ? :excited : :wagging
   end
 
   def rub_belly
-    # Your code here
+    @state = :calm
   end
 
   def spray
-    # Your code here
+    @state = @state == :growling ? :angry : :growling
   end
 
   def speak
-    # Your code here
+    if SOUNDS.key? @state
+      SOUNDS[@state]
+    else
+      SOUNDS[:default]
+    end
   end
 end
