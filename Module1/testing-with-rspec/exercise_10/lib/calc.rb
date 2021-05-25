@@ -1,31 +1,49 @@
+require 'prime'
 module Calc
   class << self
     def add(*args)
-      # your code here
+      args.reduce(:+)
     end
 
     def sub(a, b)
-      # your code here
+      a - b
     end
 
     def mul(*args)
-      # your code here
+      args.reduce(:*)
     end
 
     def div(a, b)
-      # your code here
+      a.to_f / b.to_f
     end
 
     def factors(n)
-      # your code here
+      factors = []
+      n.times do |i|
+        i += 1
+
+        factors << i if (n % i).zero?
+      end
+
+      factors
     end
 
     def prime(n)
-      # your code here
+      return false if n <= 1
+
+      prime = true
+      n.times do |x|
+        x += 1
+        next if x == 1 || x == n
+
+        prime = false if (n % x).zero?
+      end
+
+      prime
     end
 
     def primes_in_range(first, last)
-      # your code here
+      (first..last).select { |n| prime(n) }
     end
   end
 end
