@@ -33,9 +33,7 @@ class PlayingCardDeck < Deck
     hands = []
     count.times do
       hand = []
-      5.times do
-        hand << deal
-      end
+      5.times { hand << deal }
       hands << hand
     end
     hands

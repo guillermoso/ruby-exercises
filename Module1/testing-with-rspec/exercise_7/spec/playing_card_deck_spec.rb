@@ -48,7 +48,7 @@ describe PlayingCardDeck do
   end
 
   describe "#available_suits" do
-    it "returns array of available suits" do
+    it "returns available suits" do
       available_suits = %w[clubs spades hearts diamonds]
 
       expect(@playing_deck.available_suits).to eql available_suits
@@ -56,7 +56,7 @@ describe PlayingCardDeck do
   end
 
   describe "#available_values" do
-    it "returns array of available values" do
+    it "returns available values" do
       available_values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
 
       expect(@playing_deck.available_values).to eql available_values
@@ -64,7 +64,7 @@ describe PlayingCardDeck do
   end
 
   describe "#deal_poker_hands" do
-    it "returns specified number of hands" do
+    it "returns the specified number of hands" do
       deck = PlayingCardDeck.new
 
       hands = deck.deal_poker_hands(2)
