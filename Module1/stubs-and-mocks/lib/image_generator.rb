@@ -11,6 +11,7 @@ class ImageGenerator
       images << "image#{num}"
     end
     images
+    # []
   end
 
   def change_max_size(num)

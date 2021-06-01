@@ -2,13 +2,13 @@ class User
   attr_reader :email,
               :image_generator,
               :id,
-              :image_generator_objects
+              :image_generator_objects # ? de donde sale esto
 
   def initialize(email, image_generator)
     @email = email
     @image_generator = image_generator
     @profile_image = nil
-    @id = rand(100000)
+    @id = rand(100_000)
     @image_history = []
   end
 
@@ -20,7 +20,8 @@ class User
     gets.chomp.to_i
   end
 
-  def add_image_generators(image)
+  # add_image_generators
+  def add_image_history(image)
     @image_history << image
   end
 
